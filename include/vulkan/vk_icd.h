@@ -80,15 +80,16 @@ static inline bool valid_loader_magic_value(void *pNewObject) {
  * contains the platform-specific connection and surface information.
  */
 typedef enum {
+    VK_ICD_WSI_PLATFORM_ANDROID,
+    VK_ICD_WSI_PLATFORM_DISPLAY,
+    VK_ICD_WSI_PLATFORM_HEADLESS,
+    VK_ICD_WSI_PLATFORM_IOS,
+    VK_ICD_WSI_PLATFORM_MACOS,
     VK_ICD_WSI_PLATFORM_MIR,
     VK_ICD_WSI_PLATFORM_WAYLAND,
     VK_ICD_WSI_PLATFORM_WIN32,
     VK_ICD_WSI_PLATFORM_XCB,
-    VK_ICD_WSI_PLATFORM_XLIB,
-    VK_ICD_WSI_PLATFORM_ANDROID,
-    VK_ICD_WSI_PLATFORM_MACOS,
-    VK_ICD_WSI_PLATFORM_IOS,
-    VK_ICD_WSI_PLATFORM_DISPLAY
+    VK_ICD_WSI_PLATFORM_XLIB
 } VkIcdWsiPlatform;
 
 typedef struct {
@@ -166,5 +167,9 @@ typedef struct {
     VkDisplayPlaneAlphaFlagBitsKHR alphaMode;
     VkExtent2D imageExtent;
 } VkIcdSurfaceDisplay;
+
+typedef struct {
+    VkIcdSurfaceBase base;
+} VkIcdSurfaceHeadless;
 
 #endif  // VKICD_H
